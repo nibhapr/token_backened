@@ -41,32 +41,52 @@
     }
   </script>
 
-  <style>
+ <style>
     .token-slip {
-      border-style: dashed;
-      width: 250px;
-      /* Adjust width as needed */
-      padding: 10px;
-      margin: 20px auto;
-      font-family: Arial, sans-serif;
+      border: none;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      width: 320px;
+      padding: 24px 20px;
+      margin: 32px auto;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #222;
+      transition: box-shadow 0.2s;
+    }
+
+    .token-slip:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.16), 0 3px 8px rgba(0,0,0,0.12);
     }
 
     .title {
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1976d2;
+      letter-spacing: 1px;
     }
 
     .token-details {
-      font-size: 14px;
-      margin-bottom: 10px;
+      font-size: 16px;
+      margin-bottom: 12px;
+      background: #f5f7fa;
+      border-radius: 8px;
+      padding: 12px 0;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .token-details strong {
+      color: #388e3c;
+      font-weight: 600;
+      margin-left: 4px;
     }
 
     .barcode {
-      border-top: 1px solid #000;
-      margin-top: 10px;
+      border-top: 1px solid #e0e0e0;
+      margin-top: 14px;
       text-align: center;
-      padding-top: 5px;
+      padding-top: 7px;
     }
 
     .center2 {
@@ -94,9 +114,6 @@
     h3 {
       font-size: 16px;
     }
-
-    /* Hide certain elements */
-    /* Example: hide the current token and average time on mobile */
     .center .h2,
     .center .h3 {
       display: none;
