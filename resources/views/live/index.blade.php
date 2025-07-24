@@ -61,7 +61,7 @@
 
     .title {
       font-size: 64px;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 16px;
       color: #1976d2;
       letter-spacing: 1px;
@@ -78,7 +78,7 @@
 
     .token-details strong {
       color: #388e3c;
-      font-weight: 600;
+      font-weight: 700;
       margin-left: 4px;
     }
 
