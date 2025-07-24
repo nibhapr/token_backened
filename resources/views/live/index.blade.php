@@ -48,7 +48,7 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.08);
       border-radius: 16px;
       width: 320px;
-      padding: 24px 20px;
+      padding: 48px 40px;
       margin: 32px auto;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #222;
@@ -60,7 +60,7 @@
     }
 
     .title {
-      font-size: 22px;
+      font-size: 64px;
       font-weight: 700;
       margin-bottom: 16px;
       color: #1976d2;
@@ -68,7 +68,7 @@
     }
 
     .token-details {
-      font-size: 16px;
+      font-size: 32px;
       margin-bottom: 12px;
       background: #f5f7fa;
       border-radius: 8px;
