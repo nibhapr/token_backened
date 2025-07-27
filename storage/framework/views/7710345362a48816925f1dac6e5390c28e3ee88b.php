@@ -9,8 +9,11 @@
     <link rel="apple-touch-icon" href="<?php echo e(asset('app-assets/images/icon/favicon.ico')); ?>">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('app-assets/images/icon/favicon.ico')); ?>">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="<?php echo e(mix('css/app.css')); ?>" rel="stylesheet">
+
     <!-- BEGIN: VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/vendors/vendors.min.css')); ?>">
+
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
     <?php if(\App::currentLocale() == 'sa'): ?>

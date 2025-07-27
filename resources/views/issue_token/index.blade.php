@@ -10,33 +10,31 @@
 </div>
 <div id="main" class="noprint" style="padding: 15px 15px 0px; ">
    
-        <section class="content-wrapper no-print">
-            <div class="container no-print">
-                <div class="row">
-                <div class="col s12">
-                 <div class="card" id="service-btn-container">
-              <div class="card-content center-align">
-              <span class="card-title" style="line-height: 3; font-size: 22px; margin-bottom: 10px;">
-                {{__('messages.issue_token.click one service to issue token')}}
-                  </span>
-                   </div>
-                  </div>
-                 </div>
-                    <!-- <div class="col s12">
-                        <div class="card"  style="display:flex; justify-content: center; align-items: center; " id="service-btn-container">
-                        <span class="card-title" style="line-height:3;font-size:22px;margin-bottom:10px"> {{__('messages.issue_token.click one service to issue token')}}</span>
-                    </div>  -->
-                             <div class="divider" style="margin:10px 0 10px 0"></div>
-
-                 
-        </div>
+        <section class="content-wrapper no-print mt-2">
+    <div class="container no-print">
+        <div class="flex justify-center">
+            <div class="w-full max-w-xl">
+                <div class="bg-gradient-to-br from-blue-500 via-teal-400 to-blue-600 rounded-2xl shadow-2xl mb-8 flex items-center justify-center min-h-[120px]" id="service-btn-container">
+                    <div class="p-8 w-full text-center">
+                        <span class="block text-3xl font-extrabold text-white drop-shadow-lg tracking-wide mb-2 leading-relaxed">
+                            {{__('messages.issue_token.click one service to issue token')}}
+                        </span>
+                    </div>
+                </div>
+                <!-- <div class="border-t border-gray-200 my-4"></div> -->
             </div>
-        </section>
-        @foreach($services as $service)
-                    <div style="display: flex; justify-content: center;">
-                 <div class="btn btn-large btn-queue waves-effect waves-light mr-2  mb-1" id="service_id_24" style="background: #00BFFF" onclick="queueDept({{$service}})">{{$service->name}}</div>
-                    @endforeach
-                    </div>      
+        </div>
+    </div>
+</section>
+        <div class="flex flex-wrap justify-center gap-6 mt-2 mb-8">
+            @foreach($services as $service)
+                <button type="button"
+                    class="w-64 h-24 rounded-2xl shadow-xl bg-gradient-to-br from-blue-500 via-teal-400 to-blue-600 text-white text-2xl font-extrabold tracking-wide transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 flex items-center justify-center"
+                    onclick="queueDept({{$service}})">
+                    {{$service->name}}
+                </button>
+            @endforeach
+        </div>      
                   
                     <form action="{{route('create-token')}}" method="post" id="my-form-two" style="display: none;">
                         {{csrf_field()}}
@@ -50,7 +48,7 @@
             <div class="modal-content" style="padding-bottom:0">
                 <div id="inline-form">
                     <div class="card-content">
-                        <div class="row">
+                        <div class="row items-center">
                             <div class="input-field col s4" id="name_tab">
                                 <input id="name" name="name" type="text" value="" data-error=".name">
                                 <label for="name">{{__('messages.settings.name')}}</label>
@@ -65,7 +63,7 @@
 
                                 </div>
                             </div>
-                            <div class="input-field col s4" id="email_tab">
+                            <div class="input-field col s4 items-center" id="email_tab">
                                 <input id="email" name="email" type="email" value="" data-error=".email">
                                 <label for="email">{{__('messages.settings.email')}}</label>
                                 <div class="email">
@@ -76,8 +74,12 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button id="modal_button" type="submit" class="modal-action waves-effect waves-green btn-flat" style="background: #009688; color:#fff" onclick="issueToken()">{{__('messages.common.submit')}}</button>
+            <div class="modal-footer flex justify-center p-6 bg-transparent rounded-b-2xl">
+                <button id="modal_button" type="submit"
+                    class="px-8 py-3 rounded-xl bg-white text-blue-700 font-bold shadow hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:opacity-50"
+                    onclick="issueToken()">
+                    {{__('messages.common.submit')}}
+                </button>
             </div>
             <form>
     </div>
@@ -85,6 +87,12 @@
 @endsection
 <div id="printarea" class="printarea" style="text-align:center;margin-top: 20px; display:none">
 </div>
+<style>
+.flex, .hidden {
+    display: flex;
+    justify-content: center;
+}
+</style>
 @section('js')
 <script>
     $(document).ready(function() {

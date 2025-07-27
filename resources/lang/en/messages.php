@@ -202,7 +202,7 @@ return [
         'something went wrong' => 'something went wrong',
     ],
     'issue_token'=>[
-        'click one service to issue token'=>'Click one service to Issue Token',
+        'click one service to issue token'=>'Generate your Token Here',
         'customer waiting'=>'Customer Waiting',
         'please wait for your turn'=>'Please wait for your turn'
     ],

@@ -12,98 +12,61 @@
     <title>Digiimpact</title>
     <link rel="apple-touch-icon" href="{{asset('app-assets/images/icon/favicon.ico')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/icon/favicon.ico')}}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- BEGIN: VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/vendors.min.css')}}">
-    <!-- END: VENDOR CSS-->
-    <!-- BEGIN: Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/vertical-dark-menu-template/materialize.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/vertical-dark-menu-template/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/login.css')}}">
-    <!-- END: Page Level CSS-->
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/custom/custom.css')}}">
-    <!-- END: Custom CSS-->
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <!-- END: Head-->
 
-<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 1-column    blank-page blank-page" data-open="click" data-menu="vertical-dark-menu" data-col="1-column" style="background-color: #ffffff;">
-    <div class="row">
-        <div class="col s12">
-            <div class="container">
-                <div id="login-page" class="row">
-                    <div class="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
-                        @if ($errors->has('error'))
-                        <div class="card-alert card red lighten-5">
-                            <div class="card-content red-text">
-                                <p>{{ $errors->first('error') }}</p>
-                            </div>
-                            <button type="button" class="close red-text" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        @endif
-                       
-                        <form id="login_form" class="login-form" method="post" action="{{route('post_login')}}">
-                            @csrf
-
-                            <div class="row">
-                                <div class="input-field col s12 offset-m4">
-                                    <h5 class="ml-4" style="font-weight: 800;">Digiimpact</h5>
-                                </div>
-                            </div>
-                            <div class="row margin">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix pt-2">person_outline</i>
-                                    <input id="email" type="text" name="email" value="{{old('email')}}">
-                                    <label for="email" class="form-control form-control-lg">Email</label>
-                                </div>
-                            </div>
-          
-
-                            <div class="row margin">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix pt-2">lock_outline</i>
-                                    <input id="password" type="password" name="password">
-                                    <label for="password">Password</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s12 m12 l12 ml-2 mt-1">
-                                    <p>
-                                        <label>
-                                            <input type="checkbox" />
-                                            <span>Remember Me</span>
-                                        </label>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12" style="display: flex; justify-content: center;">
-                                    <button type="submit" class="btn waves-effect waves-light   col s6">Login</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="content-overlay"></div>
-        </div>
+<body class="bg-gray-50">
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm border-2s">
+      <!-- <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" class="mx-auto h-10 w-auto" /> -->
+      <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account</h2>
     </div>
+    @if ($errors->has('error'))
+<div class="sm:mx-auto sm:w-full sm:max-w-sm border-2s">
+<p class="mt-10 text-center font-normal tracking-tight text-red-400">{{ $errors->first('error') }}</p>
+</div>
+ @endif
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <form action="{{route('post_login')}}" method="POST" class="space-y-6">
+        @csrf
+        <div>
+          <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
+          <div class="mt-2">
+            <input id="email" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
+            <div class="text-sm">
+              <a href="#" class="font-semibold text-sky-400 hover:text-sky-500">Forgot password?</a>
+            </div>
+          </div>
+          <div class="mt-2">
+            <input id="password" type="password" name="password" required autocomplete="current-password" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" class="flex w-full justify-center rounded-md bg-sky-400 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-sky-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+        </div>
+      </form>
+
+      <p class="mt-10 text-center text-sm/6 text-gray-500">
+        Not a member?
+        <a href="#" class="font-semibold text-sky-400 hover:text-sky-500">Start a 14 day free trial</a>
+      </p>
+    </div>
+  </div>
 
     <!-- BEGIN VENDOR JS-->
     <script src="{{asset('app-assets/js/vendors.min.js')}}"></script>
-    <!-- BEGIN VENDOR JS-->
-    <!-- BEGIN PAGE VENDOR JS-->
-    <!-- END PAGE VENDOR JS-->
-    <!-- BEGIN THEME  JS-->
     <script src="{{asset('app-assets/js/plugins.js')}}"></script>
     <script src="{{asset('app-assets/js/search.js')}}"></script>
     <script src="{{asset('app-assets/js/custom/custom-script.js')}}"></script>
-    <!-- END THEME  JS-->
-    <!-- BEGIN PAGE LEVEL JS-->
-    <!-- END PAGE LEVEL JS-->
-    <!-- validation -->
     <script src="{{asset('app-assets/js/vendors.min.js')}}"></script>
     <script src="{{asset('app-assets/vendors/jquery-validation/jquery.validate.min.js')}}"></script>
     <script>

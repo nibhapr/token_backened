@@ -6,7 +6,7 @@
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
-<div id="main" class="no-print" style="padding: 15px 15px 0px;">
+<div id="main" class="no-print" style="padding: 0px 0px 0px;">
     <div class="wrapper" style=" min-height: 557px;" id="display-page">
         <section class="content-wrapper no-print">
             <div id="callarea">
@@ -19,6 +19,7 @@
                                 <th scope="col" style="font-size:45px;font-weight:bold;color:white;line-height:1.2">Counter No</th>
                                 <th scope="col" style="font-size:45px;font-weight:bold;color:white;line-height:1.2">Token Status</th>
                                 <th scope="col" style="font-size:45px;font-weight:bold;color:white;line-height:1.2">Doctor Name</th>
+
                             </tr>
 
                         </thead>
@@ -30,13 +31,17 @@
                                 <td v-if="!token" style="font-size:45px;padding-left:30px;font-weight:bold;line-height:1.2"><?php echo e(__('messages.display.nil')); ?></td>
                                 <td v-if="token?.call_status_id == <?php echo e(CallStatuses::SERVED); ?>" style="font-size:45px;padding-left:30px;font-weight:bold;line-height:1.2;color:#00DB3A"><?php echo e(__('messages.display.served')); ?></td>
                                 <td v-if="token?.call_status_id == <?php echo e(CallStatuses::NOSHOW); ?>" style="font-size:45px;padding-left:30px;font-weight:bold;line-height:1.2;color:red"><?php echo e(__('messages.display.noshow')); ?></td>
-                                <td v-if="token?.call_status_id != <?php echo e(CallStatuses::SERVED); ?> &&  token?.call_status_id != <?php echo e(CallStatuses::NOSHOW); ?>" style="font-size:45px;padding-left:30px;font-weight:bold;line-height:1.2;color:#D9AD09">Serving</td>
-                                <td style="font-size:45px;padding-left:30px;font-weight:bold;line-height:1.2;color:#50C878">Dr.Sanjay</td>
+                                <td v-if="token?.call_status_id != <?php echo e(CallStatuses::SERVED); ?> &&  token?.call_status_id != <?php echo e(CallStatuses::NOSHOW); ?>"
+                                    class="serving-animate">
+                                    SERVING
+                                </td>
+                                <td v-if="token" style="font-size:45px;padding-left:30px;font-weight:bold;line-height:1.2;color:#50C878">{{token?.service.name}}</td>
+                                <td v-if="!token" style="font-size:45px;padding-left:30px;font-weight:bold;line-height:1.2;color:#50C878"><?php echo e(__('messages.display.nil')); ?></td>
                             </tr>                            
                         </tbody>
                     </table>
                 </div>                
-                <div class ="bottom-div">
+                <div class ="bottom-div bg-sky-400">
                     <marquee><span style="font-size:<?php echo e($settings->display_font_size); ?>px;color:<?php echo e($settings->display_font_color); ?>"><?php echo e($settings->display_notification ? $settings->display_notification : 'Hello'); ?><span></span></span></marquee>
                 </div>
                 <audio id="called_sound">
@@ -67,16 +72,27 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-              
     }
     .bottom-div {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-}
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+    }
+    @keyframes  servingPulse {
+        0% { color: #ff0000; }
+        50% { color: #FFD700; }
+        100% { color: #ff0000; }
+    }
+    .serving-animate {
+        animation: servingPulse 1s infinite;
+        font-size: 45px;
+        padding-left: 30px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
 </style>
-<?php echo $__env->make('layout.call_page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Milan\Desktop\Work\token\resources\views/display/index1.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.call_page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Milan\Desktop\Work\token_backend\resources\views/display/index.blade.php ENDPATH**/ ?>

@@ -9,8 +9,11 @@
     <link rel="apple-touch-icon" href="{{asset('app-assets/images/icon/favicon.ico')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/icon/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
     <!-- BEGIN: VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/vendors.min.css')}}">
+
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
     @if(\App::currentLocale() == 'sa')

@@ -8,20 +8,20 @@
     <div class="loader-section section-right"></div>
 
 </div>
-<div id="main" style="width:99%">
+<div id="main" class="w-full">
     <div class="wrapper no-print" id="call-page">
         <section id="content" class="content-wrapper no-print" v-cloak>
-            <div class="container" style="background:#f9f9f9 !important;">
-                <div id="card-reveal" class="section" style="padding:0px !important;">
-                    <div class="col s12">
-                        <div class="row">
-                            <div class="col s12" style="padding:0px !important;">
-                                <div class="card" style=" margin:0px !important; box-shadow: none; background:#f9f9f9 !important;">
+            <div class="container bg-gray-50 rounded-xl  p-8">
+                <div id="card-reveal" class="section p-0">
+                    <div class="w-full">
+                        <div class="flex flex-col gap-8">
+                            <div class="w-full p-0">
+                                <div class="bg-gray-50 rounded-2xl  p-0 ">
                                     <div class="card-content" v-if="selected_counter && selected_service">
-                                        <div class="col  m12 s12" style="min-height: 500px;">
-                                            <div class="row" style="min-width: 800px;">
-                                                <div class="col s12 center" v-if="token">
-                                                    <span style="font-size: 115px;" class="truncate">
+                                        <div class="w-full min-h-[500px]">
+                                            <div class="flex flex-col items-center min-w-[800px]">
+                                                <div v-if="token" class="w-full flex justify-center items-center">
+                                                    <span class= "truncate text-black text-[115px] font-extrabold">
                                                         <a class="waves-effect waves-light  modal-trigger" href="#modal5" dismissible="false" style="color: #000;">
                                                             <input type="hidden" name="transfer_queue" id="transfer_queue" value="1989">
                                                             <input type="hidden" name="last_call" id="last_call" value="queue" v-cloak>
@@ -29,54 +29,58 @@
                                                         </a>
                                                     </span>
                                                 </div>
-                                                <div class="col s12 center" v-if="!token">
-                                                    <span style="font-size: 115px; color:black" class="truncate">
+                                                <div v-if="!token" class="w-full flex justify-center items-center">
+                                                    <span class="truncate text-black text-[115px] font-extrabold">
                                                         <?php echo e(__('messages.call_page.nil')); ?>
 
                                                     </span><br>
                                                 </div>
-                                                <div class="col s12 center">
-                                                    <div style="font-size:25px;" v-if="token?.call_status_id == <?php echo e(CallStatuses::SERVED); ?>"><?php echo e(__('messages.call_page.served')); ?></div>
-                                                    <div style="font-size:25px;" v-if="token?.call_status_id == <?php echo e(CallStatuses::NOSHOW); ?>"><?php echo e(__('messages.call_page.noshow')); ?></div>
-                                                    <div style="font-size:30px;" v-if="token && isCalled && this.token.ended_at == null">{{time_after_called}}</div>
+                                                <div class="w-full flex flex-col items-center mt-4">
+                                                    <div v-if="token?.call_status_id == <?php echo e(CallStatuses::SERVED); ?>" class="text-green-600 text-2xl font-bold"><?php echo e(__('messages.call_page.served')); ?></div>
+                                                    <div v-if="token?.call_status_id == <?php echo e(CallStatuses::NOSHOW); ?>" class="text-red-600 text-2xl font-bold"><?php echo e(__('messages.call_page.noshow')); ?></div>
+                                                    <div v-if="token && isCalled && this.token.ended_at == null" class="text-blue-600 text-3xl font-bold animate-pulse">{{time_after_called}}</div>
                                                 </div>
                                             </div>
-                                            <div class="row" style="margin-top:50px; min-width:800px">
-                                                <div class=" col m6 offset-m3 col s12 center">
-                                                    <div class="input-field col s6">
-                                                        <button class="btn waves-effect waves-light center call-bt submit" type="submit" @click="serveToken(token.id)" style="min-width:165px" :disabled="!isCalled ||servedClicked"><?php echo e(__('messages.call_page.served')); ?>
+                                            <div class="flex flex-col md:flex-row justify-center gap-8 mt-12 min-w-[600px]">
+                                                <div class="flex flex-col gap-4 w-full md:w-1/2 items-center">
+                                                   <button class="w-48 h-16 rounded-xl bg-green-500 text-white text-2xl font-bold shadow-lg hover:bg-green-600 transition-all duration-200" type="button" @click="serveToken(token.id)" :disabled="!isCalled ||servedClicked">
+                                                        <?php echo e(__('messages.call_page.served')); ?>
 
-                                                            <i class="material-icons right">send</i>
-                                                        </button>
+                                                    </button>
+                                                    <button class="w-48 h-16 rounded-xl bg-yellow-500 text-white text-2xl font-bold shadow-lg hover:bg-yellow-600 transition-all duration-200" type="button" @click="recallToken(token.id)" :disabled="!isCalled || recallClicked">
+                                                        <?php echo e(__('messages.call_page.recall')); ?>
 
-                                                    </div>
-                                                    <div class="input-field col s6">
-                                                        <button class="btn waves-effect waves-light center submit call-bt" type="submit" @click="recallToken(token.id)" name="action" style="min-width:165px" :disabled="!isCalled || recallClicked"><?php echo e(__('messages.call_page.recall')); ?>
-
-                                                            <i class="material-icons right">send</i>
-                                                        </button>
-                                                    </div>
+                                                    </button>
                                                 </div>
-                                                <div class="col m6 offset-m3 col s12 center">
-                                                    <div class="input-field col s6">
-                                                        <button class="btn waves-effect waves-light center submit call-bt" type="submit" name="action" @click="noShowToken(token.id)" :disabled="!isCalled || noshowClicked" :style="[font_size_smaller  ? { 'font-size' : '14px', 'padding' : '0 4px' } : '']" style="min-width:165px;"><?php echo e(__('messages.call_page.noshow')); ?>
+                                                <div class="flex flex-col gap-4 w-full md:w-1/2 items-center">
+                                                   <button class="w-48 h-16 rounded-xl bg-red-500 text-white text-2xl font-bold shadow-lg hover:bg-red-600 transition-all duration-200" type="button" @click="noShowToken(token.id)" :disabled="!isCalled || noshowClicked">
+                                                        <?php echo e(__('messages.call_page.noshow')); ?>
 
-                                                            <i class="material-icons right" :style="[font_size_smaller ? { 'margin-left' : '0px' } : '']">send</i>
-                                                        </button>
-                                                    </div>
-                                                    <div class="input-field col s6">
+                                                    </button>
+                                                    <button id="next_call" class="w-48 h-16 rounded-xl bg-blue-500 text-white text-2xl font-bold shadow-lg hover:bg-blue-600 transition-all duration-200" type="button" @click="callNext()" :disabled="isCalled || callNextClicked">
+                                                        <?php echo e(__('messages.call_page.call next')); ?>
+
+                                                    </button>
+                                                    <!-- <div class="input-field col s6">
                                                         <button id="next_call" class="btn waves-effect waves-light center call-bt submit " :style="[font_size_smaller  ? { 'font-size' : '14px', 'padding' : '0 4px' } : '']" type="submit" style="min-width:165px;" @click="callNext()" :disabled="isCalled || callNextClicked"><?php echo e(__('messages.call_page.call next')); ?>
 
                                                             <i class="material-icons right" :style="[font_size_smaller ? { 'margin-left' : '0px' } : '']">send</i>
                                                         </button>
-                                                    </div>
+                                                    </div> -->
+                                                </div></div>
+                                                <div v-if="selected_service && selected_counter"class="w-full flex flex-col items-center mt-8">
+                                                <div class="flex items-center gap-2">
+                                                    <b class="text-lg text-gray-700"><?php echo e(__('messages.call_page.service')); ?>:</b>
+                                                    <span class="text-xl font-bold text-blue-700">{{ selected_service.name }}</span>
+                                                    <span class="mx-2">|</span>
+                                                    <b class="text-lg text-gray-700"><?php echo e(__('messages.call_page.counter')); ?>:</b>
+                                                    <span class="text-xl font-bold text-blue-700">{{selected_counter.name}}</span>
+                                                    <span class="mx-2">|</span>
+                                                    <button class="ml-4 w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-lg hover:bg-orange-600 transition-all duration-200" @click="openSetServiceModal()" title="Change">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                                                    </button>
                                                 </div>
-                                                <div class="col s12 center-align mt-2" v-if="selected_service && selected_counter">
-                                                    <b><?php echo e(__('messages.call_page.service')); ?>:</b> {{ selected_service.name }}|
-                                                    <b><?php echo e(__('messages.call_page.counter')); ?>: </b>{{selected_counter.name}} |
-                                                    <a class="btn-floating btn-action waves-effect waves-light orange tooltipped" @click="openSetServiceModal()" data-position="top" data-tooltip="Change"><i class="material-icons">edit</i></a>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
