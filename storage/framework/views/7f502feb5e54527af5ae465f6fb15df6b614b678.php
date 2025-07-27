@@ -8,14 +8,14 @@
   </head>
 
   <body>
-    @extends('layout.live_page')
-    @section('content')
+    
+    <?php $__env->startSection('content'); ?>
     <div v-cloak class="center2" id="live-page">
       <div v-if="token?.id" class="token-slip">
-        <div class="title">Your Token: {{$queue->letter}} {{$queue->number}}</div>
+        <div class="title">Your Token: <?php echo e($queue->letter); ?> <?php echo e($queue->number); ?></div>
         <div class="token-details">
-          <div v-if="lastToken">Current Token:<strong> @{{lastToken?.token_letter}} @{{lastToken?.token_number}}</strong> </div>
-          <div v-if="averageTime"><strong>Average Time: @{{averageTime}}</strong></div>
+          <div v-if="lastToken">Current Token:<strong> {{lastToken?.token_letter}} {{lastToken?.token_number}}</strong> </div>
+          <div v-if="averageTime"><strong>Average Time: {{averageTime}}</strong></div>
         </div>
       </div>
       <div v-else>
@@ -25,19 +25,19 @@
   </body>
 
   </html>
-  @endsection
-  @section('b-js')
+  <?php $__env->stopSection(); ?>
+  <?php $__env->startSection('b-js'); ?>
   <script>
     window.JLToken = {
-      get_token_for_call_url: "{{ asset($file) }}",
-      get_initial_tokens: "{{ route('get-tokens-for-display') }}",
-      date_for_display: "{{$date}}",
-      voice_type: "{{$settings->language->display}}",
-      voice_content_one: "{{$settings->language->token_translation}}",
-      voice_content_two: "{{$settings->language->please_proceed_to_translation}}",
-      date_for_display: "{{$date}}",
+      get_token_for_call_url: "<?php echo e(asset($file)); ?>",
+      get_initial_tokens: "<?php echo e(route('get-tokens-for-display')); ?>",
+      date_for_display: "<?php echo e($date); ?>",
+      voice_type: "<?php echo e($settings->language->display); ?>",
+      voice_content_one: "<?php echo e($settings->language->token_translation); ?>",
+      voice_content_two: "<?php echo e($settings->language->please_proceed_to_translation); ?>",
+      date_for_display: "<?php echo e($date); ?>",
       audioEl: document.getElementById('called_sound'),
-      token_reference: "{{$queue->reference_no}}"
+      token_reference: "<?php echo e($queue->reference_no); ?>"
     }
   </script>
 
@@ -119,4 +119,6 @@
       display: none;
     }
   </style>
-  @endsection
+  <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.live_page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/milan/Desktop/Work/token_backened/resources/views/live/index.blade.php ENDPATH**/ ?>

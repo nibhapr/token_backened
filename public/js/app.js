@@ -62804,6 +62804,7 @@ if (document.getElementById("live-page")) {
         dataLoaded: false,
         isCalled: false,
         called_tokens: [],
+        filtered_tokens: [],
         tokens_for_next_to_call: [],
         count: "0",
         time_after_called: null,
@@ -62822,15 +62823,26 @@ if (document.getElementById("live-page")) {
             var _window;
             return e.reference_no == ((_window = window) === null || _window === void 0 ? void 0 : _window.JLToken.token_reference);
           });
+          console.log(_this.tokens_for_next_to_call, _this.called_tokens);
           if (_this.token == null) {
             _this.token = _this.called_tokens.find(function (e) {
               var _window2;
-              return e.reference_no == ((_window2 = window) === null || _window2 === void 0 ? void 0 : _window2.JLToken.token_reference);
+              return e.queue.reference_no == ((_window2 = window) === null || _window2 === void 0 ? void 0 : _window2.JLToken.token_reference);
             });
           }
           console.log(_this.token);
           if (_this.called_tokens.length && _this.called_tokens[0] && _this.called_tokens[0].ended_at == null) {
-            _this.lastToken = _this.called_tokens[0];
+            _this.filtered_tokens = _this.called_tokens.filter(function (t) {
+              return t.service_id == _this.token.service_id;
+            }).map(function (t) {
+              return {
+                id: t.id,
+                service: t.service_id
+              };
+            });
+            _this.lastToken = _this.called_tokens.filter(function (t) {
+              return t.service_id == _this.token.service_id;
+            })[0];
             _this.setDataForTimer(_this.lastToken);
             _this.isCalled = true;
             var timeArr = _this.called_tokens.map(function (obj) {
@@ -62841,7 +62853,7 @@ if (document.getElementById("live-page")) {
             if (timeArr.length) {
               _this.averageTime = _this.getAverageTime(timeArr);
             }
-            console.log(timeArr, _this.averageTime);
+            // console.log(timeArr, this.averageTime);
           } else if (_this.called_tokens && _this.called_tokens.length && _this.called_tokens[0]) {
             var _timeArr = _this.called_tokens.map(function (obj) {
               return obj.served_time;
@@ -62851,8 +62863,9 @@ if (document.getElementById("live-page")) {
             if (_timeArr.length) {
               _this.averageTime = _this.getAverageTime(_timeArr);
             }
-            console.log(_timeArr, _this.averageTime);
-            _this.lastToken = _this.called_tokens[0];
+            _this.lastToken = _this.called_tokens.filter(function (token) {
+              return token.service_id == _this.token.service_id;
+            })[0];
             _this.isCalled = false;
           } else {
             _this.isCalled = false;
