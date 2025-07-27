@@ -68,7 +68,7 @@
     }
 
     .token-details {
-      font-size: 32px;
+      font-size: 27px;
       margin-bottom: 12px;
       background: #f5f7fa;
       border-radius: 8px;
@@ -94,7 +94,7 @@
       padding: 10px;
       height: 50%;
       position: absolute;
-      top: 50%;
+      top: 20%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
