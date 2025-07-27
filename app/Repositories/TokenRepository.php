@@ -56,7 +56,7 @@ class TokenRepository
         $tokens_for_call = Queue::where('created_at', '>=', Carbon::now()->startOfDay())->where('created_at', '<=', Carbon::now())
             ->where('called', false)->get()->toArray();
         $called_tokens =  Call::where('created_at', '>=', Carbon::now()->startOfDay())->where('created_at', '<=', Carbon::now())
-            ->orderByDesc('created_at')->get()->toArray();
+            ->with('queue')->orderByDesc('created_at')->get()->toArray();
         $data['tokens_for_call'] = $tokens_for_call;
         $data['called_tokens'] = $called_tokens;
         Storage::put('public/tokens_for_callpage.json', json_encode($data));

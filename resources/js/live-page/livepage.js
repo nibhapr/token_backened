@@ -9,6 +9,7 @@ if (document.getElementById("live-page")) {
         dataLoaded: false,
         isCalled: false,
         called_tokens: [],
+        filtered_tokens: [],
         tokens_for_next_to_call: [],
         count: "0",
         time_after_called: null,
@@ -27,9 +28,10 @@ if (document.getElementById("live-page")) {
             this.token = this.tokens_for_next_to_call.find(
               (e) => e.reference_no == window?.JLToken.token_reference
             );
+            console.log(this.tokens_for_next_to_call, this.called_tokens);
             if (this.token == null) {
               this.token = this.called_tokens.find(
-                (e) => e.reference_no == window?.JLToken.token_reference
+                (e) => e.queue.reference_no == window?.JLToken.token_reference
               );
             }
             console.log(this.token);
@@ -40,7 +42,11 @@ if (document.getElementById("live-page")) {
               this.called_tokens[0] &&
               this.called_tokens[0].ended_at == null
             ) {
-              this.lastToken = this.called_tokens[0];
+              this.filtered_tokens = this.called_tokens.filter(t => t.service_id == this.token.service_id).map(t => ({
+                id: t.id,
+                service: t.service_id,
+              }));
+              this.lastToken = this.called_tokens.filter(t => t.service_id == this.token.service_id)[0];
               this.setDataForTimer(this.lastToken);
               this.isCalled = true;
               let timeArr = this.called_tokens
@@ -49,7 +55,7 @@ if (document.getElementById("live-page")) {
               if (timeArr.length) {
                 this.averageTime = this.getAverageTime(timeArr);
               }
-              console.log(timeArr, this.averageTime);
+              // console.log(timeArr, this.averageTime);
             } else if (
               this.called_tokens &&
               this.called_tokens.length &&
@@ -61,8 +67,7 @@ if (document.getElementById("live-page")) {
               if (timeArr.length) {
                 this.averageTime = this.getAverageTime(timeArr);
               }
-              console.log(timeArr, this.averageTime);
-              this.lastToken = this.called_tokens[0];
+              this.lastToken = this.called_tokens.filter(token => token.service_id == this.token.service_id)[0];
               this.isCalled = false;
             } else {
               this.isCalled = false;
