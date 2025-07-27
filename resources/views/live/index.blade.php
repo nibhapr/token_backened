@@ -60,7 +60,7 @@
     }
 
     .title {
-      font-size: 64px;
+      font-size: 32px;
       font-weight: 800;
       margin-bottom: 16px;
       color: #1976d2;
