@@ -133,7 +133,7 @@ class CallRepository
 
     public function getCallsForDisplay()
     {
-        return Call::where('created_at', '>=', Carbon::now()->startOfDay())->where('created_at', '<=', Carbon::now())->orderByDesc('id')->with('counter')->limit(6)->get()->toArray();
+        return Call::where('created_at', '>=', Carbon::now()->startOfDay())->where('created_at', '<=', Carbon::now())->orderByDesc('id')->with('counter','service')->limit(6)->get()->toArray();
     }
 
     public function getTokenForCallNext($service_id, $counter_id)
