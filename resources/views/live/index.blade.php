@@ -49,7 +49,7 @@
       border-radius: 16px;
       width: 320px;
       padding: 48px 40px;
-      margin: 32px auto;
+      margin: 6px auto;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #222;
       transition: box-shadow 0.2s;
