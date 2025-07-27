@@ -61,10 +61,12 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        
         $settings = Setting::first();
         if ($settings->sms_enabled) {
             $request->validate([
             'name' => 'required|unique:services',
+            'details' => 'required|unique:services',
             'letter' => 'required|unique:services',
             'start_number' => 'required',
             'sms' => 'nullable',
@@ -89,6 +91,7 @@ class ServiceController extends Controller
         } else {
              $request->validate([
             'name' => 'required|unique:services',
+            'details' => 'required|unique:services',
             'letter' => 'required|unique:services',
             'start_number' => 'required',
             'sms' => 'nullable',
@@ -105,6 +108,7 @@ class ServiceController extends Controller
         DB::beginTransaction();
         try {
             $service = $this->services->create($request->all());
+           
             Storage::put('public/service_' . $service->id . '_display.json', json_encode([]));
         } catch (\Exception $e) {
             DB::rollback();
@@ -152,6 +156,7 @@ class ServiceController extends Controller
     {   
         $request->validate([
             'name' => 'required|unique:services,name,' . $service->id,
+            'details' => 'required|unique:services,details,' . $service->id,
             'letter' => 'required|unique:services,letter,' . $service->id,
             'start_number' => 'required',
             'sms' => 'nullable',

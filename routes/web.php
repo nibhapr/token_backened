@@ -35,9 +35,7 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 
 
 Route::get('/test', function() {
-    $token = Queue::find(1);
-    $url = config('app.url') . '/live/' .  $token->reference_no;
-    return $url;
+    dd(Service::find(1));
 });
 
 //login

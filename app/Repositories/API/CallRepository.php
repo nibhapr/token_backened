@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Repositories\API;
-
 use App\Consts\CallStatuses;
 use App\Jobs\SendSmsJob;
 use App\Models\Call;

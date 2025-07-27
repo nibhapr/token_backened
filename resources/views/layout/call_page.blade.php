@@ -10,7 +10,7 @@
   @elseif(Route::current()->getName() == 'display')
   <title>Display</title>
   @else
-  <title>JL Token</title>
+  <title>Token System</title>
   @endif
   <link rel="apple-touch-icon" href="{{asset('app-assets/images/icon/favicon.ico')}}">
   <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/icon/favicon.ico')}}">
@@ -44,60 +44,7 @@
 
 <body id="page-layout-body" class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns ">
 
-  <!-- BEGIN: Header-->
-
-  <!-- <header class="page-topbar noprint" id="header">
-    <div class="navbar navbar-fixed">
-      <nav class="navbar-main navbar-color nav-collapsible sideNav-lock">
-        <div class="nav-wrapper">
-          @if(\App::currentLocale() == 'sa')
-          <ul class="navbar-list left" style="padding-right: 60px;">
-            <li><span style="font-weight: bold; font-size: x-large; ">JL Token</span></li>
-          </ul>
-          @else
-          <ul class="navbar-list left" style="padding-left: 60px;">
-            <li><span style="font-weight: bold; font-size: x-large; ">JL Token</span></li>
-          </ul>
-          @endif
-          <ul class="navbar-list right">
-            @if(isset($settings->logo) && Storage::disk('public')->exists($settings->logo))
-            <li style="padding: 5px 0;">
-              <img style="max-height:50px" src="{{$settings->logo_url}}" alt="avatar">
-            </li>
-            @endif
-             <li class="navbar-list left"><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="extra-dropdown"><i class="material-icons">attachment</i></a></li> 
-            <li class="navbar-list left"><a><b>{{$settings->name}},{{$settings->location}}</b></a></li>
-            @if(\Request::route()->getName() == 'show_call_page')<li class="dropdown-language"><a class="waves-effect waves-block waves-light translation-button" href="#" data-target="translation-dropdown"><span class="flag-icon flag-icon-{{\App::currentLocale()}}"></span></a></li>@endif
-            <li id="side-menu-icon-attachment" class="navbar-list left"><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="extra-dropdown"><i class="material-icons">attachment</i></a></li>
-            <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
-            <li id="side-menu-icon"><a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right"><i class="material-icons">format_indent_increase</i></a></li>
-          </ul>
-
-
-
-          <ul class="dropdown-content" id="extra-dropdown">
-            <li><a href="" style="font-weight: 600; color:black">{{__('messages.common.links')}}</a></li>
-            <li class="divider"></li>
-            <li><a class="grey-text text-darken-1" href="{{route('issue_token')}}" target="_blank"> {{__('messages.menu.issue token url')}}</a></li>
-            <li><a class="grey-text text-darken-1" href="{{route('display')}}" target="_blank"> {{__('messages.menu.display url')}}</a></li>
-          </ul>
-
-          <ul class="dropdown-content" id="translation-dropdown">
-            <li class="dropdown-item" onclick="changeLanguage(1)"><a class="grey-text text-darken-1" href="#!" data-language="en"><i class="flag-icon flag-icon-gb"></i> English</a></li>
-            <li class="dropdown-item" onclick="changeLanguage(2)"><a class="grey-text text-darken-1" href="#!" data-language="fr"><i class="flag-icon flag-icon-fr"></i> French</a></li>
-            <li class="dropdown-item" onclick="changeLanguage(3)"><a class="grey-text text-darken-1" href="#!" data-language="in"><i class="flag-icon flag-icon-in"></i> Hindi</a></li>
-            <li class="dropdown-item" onclick="changeLanguage(4)"><a class="grey-text text-darken-1" href="#!" data-language="sa"><i class="flag-icon flag-icon-sa"></i> Arabic</a></li>
-            <li class="dropdown-item" onclick="changeLanguage(5)"><a class="grey-text text-darken-1" href="#!" data-language="sa"><i class="flag-icon flag-icon-es"></i> Spanish</a></li>
-            <li class="dropdown-item" onclick="changeLanguage(6)"><a class="grey-text text-darken-1" href="#!" data-language="sa"><i class="flag-icon flag-icon-pt"></i> Portuguese</a></li>
-            <li class="dropdown-item" onclick="changeLanguage(7)"><a class="grey-text text-darken-1" href="#!" data-language="sa"><i class="flag-icon flag-icon-it"></i> Italian</a></li>
-            <li class="dropdown-item" onclick="changeLanguage(8)"><a class="grey-text text-darken-1" href="#!" data-language="sa"><i class="flag-icon flag-icon-id"></i> Indonesian</a></li>
-          </ul>
-
-        </div>
-
-      </nav>
-    </div>
-  </header> -->
+ 
   @if(isset($show_menu) && $show_menu)
   @include('layout.menu')
   @endif

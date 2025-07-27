@@ -14,8 +14,8 @@
     <div class="container no-print">
         <div class="flex justify-center">
             <div class="w-full max-w-xl">
-                <div class="bg-gradient-to-br from-blue-500 via-teal-400 to-blue-600 rounded-2xl shadow-2xl mb-8 flex items-center justify-center min-h-[120px]" id="service-btn-container">
-                    <div class="p-8 w-full text-center">
+                <div class="bg-gradient-to-br from-blue-500 via-teal-400 to-blue-600 rounded-2xl shadow-2xl mb-8 flex items-center justify-center min-h-[100px]" id="service-btn-container">
+                    <div class="p-4 w-full text-center">
                         <span class="block text-3xl font-extrabold text-white drop-shadow-lg tracking-wide mb-2 leading-relaxed">
                             <?php echo e(__('messages.issue_token.click one service to issue token')); ?>
 
@@ -30,9 +30,10 @@
         <div class="flex flex-wrap justify-center gap-6 mt-2 mb-8">
             <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <button type="button"
-                    class="w-64 h-24 rounded-2xl shadow-xl bg-gradient-to-br from-blue-500 via-teal-400 to-blue-600 text-white text-2xl font-extrabold tracking-wide transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 flex items-center justify-center"
+                    class="w-64 h-24 rounded-2xl shadow-xl bg-gradient-to-br from-blue-500 via-teal-400 to-blue-600 text-white text-2xl font-extrabold tracking-wide transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 flex flex-col items-center justify-center"
                     onclick="queueDept(<?php echo e($service); ?>)">
-                    <?php echo e($service->name); ?><br>General MD</br>
+                    <div class="text-2xl font-extrabold"><?php echo e($service->name); ?></div>
+                    <div class="text-sm font-normal mt-1"><?php echo e($service->details); ?></div>
                 </button>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>      

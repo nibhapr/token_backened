@@ -124,6 +124,7 @@
         <div class="loader-section section-right"></div>
 
     </div>
+ 
     <?php echo $__env->yieldContent('content'); ?>
     <!-- END: Page Main-->
 

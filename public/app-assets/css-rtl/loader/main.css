@@ -29,7 +29,7 @@ Enjoy responsibly!
    ========================================================================== */
 p {
     line-height: 1.33em;
-    color: #7E7E7E;
+    color: #3d58b9;
 }
 h1 {
     color: #EEEEEE;
@@ -39,8 +39,8 @@ h1 {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     z-index: 1000;
 }
 #loader {
@@ -48,8 +48,8 @@ h1 {
     position: relative;
     left: -44%;
     top: 50%;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     margin: -75px 0 0 -75px;
     border-radius: 50%;
     border: 3px solid transparent;
@@ -70,7 +70,7 @@ h1 {
         bottom: 5px;
         border-radius: 50%;
         border: 3px solid transparent;
-        border-top-color: #e74c3c;
+        border-top-color: #0a0909;
 
         -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
         animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
@@ -83,7 +83,7 @@ h1 {
         left: 15px;
         right: 15px;
         bottom: 15px;
-        border-radius: 50%;
+        border-radius: 100%;
         border: 3px solid transparent;
         border-top-color: #f9c922;
 
@@ -119,8 +119,8 @@ h1 {
     #loader-wrapper .loader-section {
         position: fixed;
         top: 0;
-        width: 51%;
-        height: 100%;
+        width: 41%;
+        height: 80%;
         background: #eceff1;
         z-index: 1000;
         -webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */
@@ -182,7 +182,7 @@ h1 {
     #content {
         margin: 0 auto;
         padding-bottom: 50px;
-        width: 80%;
+        width: 60%;
         max-width: 978px;
     }  
 
@@ -204,7 +204,7 @@ h1 {
     border: 0;
     overflow: hidden;
     /* IE 6/7 fallback */
-    *text-indent: -9999px;
+    text-indent: -9999px;
 }
 
 .ir:before {
@@ -289,7 +289,7 @@ h1 {
  */
 
 .clearfix {
-    *zoom: 1;
+    zoom: 1;
 }
 
 /* ==========================================================================

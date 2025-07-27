@@ -124,6 +124,7 @@
         <div class="loader-section section-right"></div>
 
     </div>
+ 
     @yield('content')
     <!-- END: Page Main-->
 

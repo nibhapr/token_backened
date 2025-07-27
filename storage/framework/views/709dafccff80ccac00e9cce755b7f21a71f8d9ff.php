@@ -37,6 +37,7 @@
                                                 <tr>
                                                     <th width="10px">#</th>
                                                     <th><?php echo e(__('messages.service_page.name')); ?></th>
+                                                    <th>Details</th>
                                                     <th><?php echo e(__('messages.service_page.letter')); ?></th>
                                                     <th><?php echo e(__('messages.service_page.starting number')); ?></th>
                                                     <th><?php echo e(__('messages.service_page.status')); ?></th>
@@ -48,6 +49,7 @@
                                                 <tr>
                                                     <td><?php echo e($key+1); ?></td>
                                                     <td><?php echo e($service->name); ?></td>
+                                                    <td><?php echo e($service->details); ?></td>
                                                     <td><?php echo e($service->letter); ?></td>
                                                     <td><?php echo e($service->start_number); ?></td>
                                                     <td>

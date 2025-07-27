@@ -35,7 +35,7 @@
                                     class="serving-animate">
                                     SERVING
                                 </td>
-                                <td v-if="token" style="font-size:45px;padding-left:30px;font-weight:bold;line-height:1.2;color:#50C878">{{token?.service.name}}</td>
+                                <td v-if="token" style="font-size:45px;padding-left:30px;font-weight:bold;line-height:1.2;color:#50C878">{{token?.service.name}}<span class ="text-xl text-black ml-2">[{{token?.service.details}}]</span></td>
                                 <td v-if="!token" style="font-size:45px;padding-left:30px;font-weight:bold;line-height:1.2;color:#50C878"><?php echo e(__('messages.display.nil')); ?></td>
                             </tr>                            
                         </tbody>

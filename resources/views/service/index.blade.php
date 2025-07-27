@@ -37,6 +37,7 @@
                                                 <tr>
                                                     <th width="10px">#</th>
                                                     <th>{{__('messages.service_page.name')}}</th>
+                                                    <th>Details</th>
                                                     <th>{{__('messages.service_page.letter')}}</th>
                                                     <th>{{__('messages.service_page.starting number')}}</th>
                                                     <th>{{__('messages.service_page.status')}}</th>
@@ -48,6 +49,7 @@
                                                 <tr>
                                                     <td>{{$key+1}}</td>
                                                     <td>{{$service->name}}</td>
+                                                    <td>{{$service->details}}</td>
                                                     <td>{{$service->letter}}</td>
                                                     <td>{{$service->start_number}}</td>
                                                     <td>

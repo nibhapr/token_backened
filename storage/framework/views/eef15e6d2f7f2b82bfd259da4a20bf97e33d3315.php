@@ -28,12 +28,21 @@
 
                                 <div class="row">
                                     <div class="row form_align">
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s6">
                                             <label for="name"><?php echo e(__('messages.service_page.service name')); ?></label>
                                             <input id="name" name="name" type="text" value="<?php echo e($service->name); ?>" data-error=".name">
                                             <div class="name">
                                                 <?php if($errors->has('name')): ?>
                                                 <span class="text-danger errbk"><?php echo e($errors->first('name')); ?></span>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <label for="details">Details</label>
+                                            <input id="details" name="details" type="text" value="<?php echo e($service->details); ?>" data-error=".details">
+                                            <div class="name">
+                                                <?php if($errors->has('details')): ?>
+                                                <span class="text-danger errbk"><?php echo e($errors->first('details')); ?></span>
                                                 <?php endif; ?>
                                             </div>
                                         </div>

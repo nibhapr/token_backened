@@ -22,6 +22,7 @@ class TokenRepository
             'reference_no' => Str::random(9),
             'letter' => $service->letter,
             'name' => ($is_details && $service->ask_name == 1) ? $data['name'] : null,
+            'details' => ($is_details && $service->ask_details == 1) ? $data['details'] : null,
             'email' => ($is_details && $service->ask_email == 1) ? $data['email'] : null,
             'phone' => ($is_details && $service->ask_phone == 1) ? $data['phone'] : null,
             'position' => $this->customerWaiting($service) + 1

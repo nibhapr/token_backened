@@ -124,7 +124,9 @@ class CallRepository
 
     public function setCallsForDisplay($service)
     {
+       
         $data = json_encode(Call::where('created_at', '>=', Carbon::now()->startOfDay())->where('created_at', '<=', Carbon::now())->orderByDesc('id')->with('counter', 'service')->limit(6)->get()->toArray());
+       
         Storage::put('public/tokens_for_display.json', $data);
 
         $service_data = json_encode(Call::where('created_at', '>=', Carbon::now()->startOfDay())->where('created_at', '<=', Carbon::now())->where('service_id', $service->id)->orderByDesc('id')->with('counter','service')->limit(6)->get()->toArray());
