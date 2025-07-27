@@ -25,12 +25,21 @@
                                 {{@csrf_field()}}
                                 <div class="row">
                                     <div class="row form_align">
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s6">
                                             <label for="name">{{__('messages.service_page.add service')}}</label>
                                             <input id="name" name="name" type="text" value="{{old('name')}}" data-error=".name">
                                             <div class="name">
                                                 @if ($errors->has('name'))
                                                 <span class="text-danger errbk">{{ $errors->first('name') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                         <div class="input-field col s6">
+                                            <label for="details">Details</label>
+                                            <input id="details" name="details" type="text" value="{{old('details')}}" data-error=".details">
+                                            <div class="details">
+                                                @if ($errors->has('details'))
+                                                <span class="text-danger errbk">{{ $errors->first('details') }}</span>
                                                 @endif
                                             </div>
                                         </div>

@@ -31,7 +31,7 @@
                 <button type="button"
                     class="w-64 h-24 rounded-2xl shadow-xl bg-gradient-to-br from-blue-500 via-teal-400 to-blue-600 text-white text-2xl font-extrabold tracking-wide transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 flex items-center justify-center"
                     onclick="queueDept({{$service}})">
-                    {{$service->name}}
+                    {{$service->name}}<br>General MD</br>
                 </button>
             @endforeach
         </div>      
