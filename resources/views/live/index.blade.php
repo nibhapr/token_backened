@@ -68,7 +68,7 @@
     }
 
     .token-details {
-      font-size: 20pxpx;
+      font-size: 20px;
       margin-bottom: 12px;
       background: #f5f7fa;
       border-radius: 8px;
