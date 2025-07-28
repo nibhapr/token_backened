@@ -60,7 +60,7 @@
     }
 
     .title {
-      font-size: 32px;
+      font-size: 24px;
       font-weight: 800;
       margin-bottom: 16px;
       color: #1976d2;
@@ -68,7 +68,7 @@
     }
 
     .token-details {
-      font-size: 27px;
+      font-size: 20pxpx;
       margin-bottom: 12px;
       background: #f5f7fa;
       border-radius: 8px;
