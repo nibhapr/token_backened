@@ -91,10 +91,11 @@
 
     .center2 {
       text-align: center;
+      margin-top:10px;
       padding: 10px;
       height: 50%;
       position: absolute;
-      top: 20%;
+      top: 30%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
